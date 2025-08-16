@@ -14,7 +14,7 @@ def random_blood_group():
     return random.choice(["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"])
 
 def random_gender():
-    return random.choice(["Male", "Female", "Other"])
+    return random.choice(["Male", "Female"])
 
 def random_room_type():
     return random.choice(["ICU", "General", "Private"])
@@ -57,6 +57,7 @@ data = {
     # Doctor Info
     "DoctorID": [random.randint(1000, 9999) for _ in range(n)],
     "DoctorName": [fake.name() for _ in range(n)],
+    "DoctorGender": [random_gender() for _ in range(n)],   # Only Male/Female
     "Specialty": [random.choice(["Cardiology", "Orthopedics", "Neurology", "Oncology", "General Medicine"]) for _ in range(n)],
     "DepartmentID": [random.randint(1, 50) for _ in range(n)],
     "ExperienceYears": [random.randint(1, 40) for _ in range(n)],
@@ -146,4 +147,4 @@ df = pd.DataFrame(data)
 # Save to CSV
 df.to_csv("healthcare_dataset.csv", index=False)
 
-print("✅ CSV file 'healthcare_dataset.csv' with 5 lakh records generated successfully!")
+print("✅ CSV file 'healthcare_dataset.csv' with 5 lakh records generated successfully (only Male/Female genders)!")
